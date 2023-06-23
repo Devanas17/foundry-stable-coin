@@ -357,7 +357,7 @@ contract DSCEngine is ReentrancyGuard {
     ) internal pure returns (uint256) {
         if (totalDscMinted == 0) return type(uint256).max;
         uint256 collateralAdjustedForThreshold = (collateralValueInUsd *
-            LIQUIDATION_THRESHOLD) / 100;
+            LIQUIDATION_THRESHOLD) / LIQUIDATION_PRECISION;
         return (collateralAdjustedForThreshold * 1e18) / totalDscMinted;
     }
 
